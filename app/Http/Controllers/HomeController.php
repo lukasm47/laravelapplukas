@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Entry;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $myentradas = Entry::where('user_id', auth()->id())->get();
+        return view('home', compact('myentradas'));
     }
 }

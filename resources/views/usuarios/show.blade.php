@@ -4,8 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <h3>Listado de Autores del Sitio</h3>
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                 <!------ Mostrar titulo   ---->
+                <div class="card-header">{{$user->name}}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,18 +16,15 @@
                         </div>
                     @endif
 
-                    <p>Mis Entradas: <p>
+                    <p>Entradas publicadas: <p>
                     <ul>
-                        @foreach ($myentradas as $myitem)
+                        @foreach ($entries as $myitem)
                             <li>
                                 <a href="{{ url('entrada/N°').$myitem->id}}">{{$myitem->title}}</a>
                             </li>
                         @endforeach
                     </ul>
-                    @if(Request::isMethod('delete'))
-                    <!------ aqui faltaria un if para validar tipo de mensaje ---->
-                    <div class="alert alert-success">{{$stats}}</div>
-                @endif
+
                 </div>
             </div>
         </div>
